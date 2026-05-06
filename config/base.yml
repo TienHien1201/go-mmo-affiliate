@@ -1,0 +1,73 @@
+app:
+  env: ${APP_ENV}
+  debug: false
+
+server:
+  http:
+    host: 0.0.0.0
+    port: 1424
+    timeout: 30s
+
+logger:
+  level: info
+  format: json
+  output: stdout
+
+database:
+  mysql:
+    host: ${MYSQL_HOST}
+    port: ${MYSQL_PORT}
+    database: ${MYSQL_DB}
+    username: ${MYSQL_USER}
+    password: ${MYSQL_PASSWORD}
+    timezone: UTC
+    parseTime: true
+    maxIdleConns: 10
+    maxOpenConns: 50
+    connMaxLifetime: 300s
+
+  redis:
+    host: ${REDIS_HOST}
+    port: ${REDIS_PORT}
+    password: ${REDIS_PASSWORD}
+    db: 0
+    poolSize: 100
+    minIdleConns: 5
+    poolTimeout: 30s
+
+  elasticSearch:
+    addresses:
+      - ${ES_URL}
+    username: ${ES_USER}
+    password: ${ES_PASSWORD}
+    enableLogging: false
+
+jwt:
+  access_secret: ${JWT_ACCESS_SECRET}
+  refresh_secret: ${JWT_REFRESH_SECRET}
+  access_expire: 15m
+  refresh_expire: 168h
+  token_type: Bearer
+
+auth:
+  google:
+    client_id: ${GOOGLE_CLIENT_ID}
+    client_secret: ${GOOGLE_CLIENT_SECRET}
+    callback_url: ${GOOGLE_CALLBACK}
+
+cloudinary:
+  cloud_name: ${CLOUDINARY_NAME}
+  api_key: ${CLOUDINARY_KEY}
+  api_secret: ${CLOUDINARY_SECRET}
+
+mailer:
+  smtp:
+    host: ${SMTP_HOST}
+    port: ${SMTP_PORT}
+    user: ${SMTP_USER}
+    pass: ${SMTP_PASS}
+  fromname: ${MAIL_FROM}
+
+stockai:
+  url: ${STOCK_AI_URL}
+  timeout: 10s

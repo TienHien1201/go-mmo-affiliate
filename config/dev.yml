@@ -1,0 +1,25 @@
+extends: base
+app:
+  env: dev
+
+database:
+  mysql:
+    host: localhost
+    port: 3306
+    database: aklht_stock
+    username: root
+    password: 8000
+
+  redis:
+    host: localhost
+    port: 6379
+    password: ''
+
+  elasticsearch:
+    addreasses:
+      - http://localhost:9200
+      - username: ''
+      - password: ''
+  stockai:
+    url: 'http://localhost:8001/'
+    timeout: 30

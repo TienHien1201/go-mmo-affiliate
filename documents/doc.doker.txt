@@ -1,0 +1,8 @@
+// Create container postgres
+docker run --name mmmo-affiliate-postgres \
+  -e POSTGRES_USER=root \
+  -e POSTGRES_PASSWORD=8000 \
+  -e POSTGRES_DB=mmmo_affiliate_db \
+  -p 5432:5432 \
+  -v pgdata:/var/lib/postgresql \
+  -d postgres:16

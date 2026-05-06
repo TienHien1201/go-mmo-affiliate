@@ -1,0 +1,23 @@
+extends: base
+
+app:
+  env: prod
+  debug: false
+
+logger:
+  level: info
+  format: json # structured JSON cho log aggregation (ELK, Loki, Datadog)
+  output: stdout
+
+database:
+  mysql:
+    maxIdleConns: 10
+    maxOpenConns: 200
+    connMaxLifetime: 300
+
+  redis:
+    poolSize: 200
+    minIdleConns: 10
+
+  elasticSearch:
+    enableLogging: false
