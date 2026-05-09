@@ -1,0 +1,21 @@
+version: '3.9' # Compose file version.
+
+services: # Service definitions.
+  app: # Main application service.
+    build: # Image build settings.
+      context: .. # Build context at repo root.
+      dockerfile: deploy/Dockerfile # Dockerfile path.
+      args: # Build-time arguments.
+        APP_NAME: mmo_affiliate_app # App name for ldflags.
+        APP_VERSION: 0.0.0 # App version for ldflags.
+        APP_ENV: prod # Build-time env injected into binary.
+    image: mmo-affiliate:prod # Resulting image name.
+    ports: # Host:container port mapping.
+      - '1424:1424' # Expose HTTP port.
+    environment: # Runtime env vars (secrets should be injected here).
+      MMO_AFFILIATE_APP_JWT_ACCESS_SECRET: '' # JWT access secret.
+      MMO_AFFILIATE_APP_JWT_REFRESH_SECRET: '' # JWT refresh secret.
+      MMO_AFFILIATE_APP_CLOUDINARY_KEY: '' # Cloudinary API key.
+      MMO_AFFILIATE_APP_CLOUDINARY_SECRET: '' # Cloudinary API secret.
+      MMO_AFFILIATE_APP_SMTP_PASS: '' # SMTP password.
+    restart: unless-stopped # Auto-restart unless manually stopped.

@@ -1,0 +1,40 @@
+# Git
+.git
+.gitignore
+
+# Build outputs
+build_*/
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.o
+
+# Logs and runtime data
+logs_*/
+*.log
+
+# Editor/OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Test artifacts
+coverage*
+*.out
+
+# Docs and misc
+documents/
+*.md
+
+# Local env
+.env
+.env.*
+
+# Node tooling (if present)
+node_modules/
+
+# Docker
+**/docker-compose.yml

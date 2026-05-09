@@ -20,8 +20,7 @@ func (h *handler) HeathyCheck(c echo.Context) error {
 	return c.String(200, "OK")
 }
 
-func (h *handler) RegisterRoutes(e *echo.Echo){
-	api := e.Group("api/v1")
-
+func (h *handler) RegisterRoutes(e *echo.Echo) {
+	api := e.Group("api/v1/")
 	api.GET("heath", h.HeathyCheck)
 }

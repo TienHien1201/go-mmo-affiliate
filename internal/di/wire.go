@@ -19,7 +19,7 @@ func NewAppContainer(cfg *config.Config, logger *xlogger.Logger) (*AppContainer,
 		return nil, nil, err
 	}
 
-		httpHandler := handler.NewHTTPHandler(logger)
+	httpHandler := handler.NewHTTPHandler(logger)
 
 	cleanup := func() {
 		if err := postpresClient.Close(); err != nil {
@@ -27,8 +27,7 @@ func NewAppContainer(cfg *config.Config, logger *xlogger.Logger) (*AppContainer,
 		}
 	}
 
-	return  &AppContainer{
+	return &AppContainer{
 		HTTPHandler: httpHandler,
-
 	}, cleanup, nil
 }

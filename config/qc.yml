@@ -1,16 +1,24 @@
-extends: base
 app:
   env: qc
+  debug: false
 
 logger:
+  level: info
   format: json
 
 database:
-  mysql:
+  postgres:
     host: 1.1.1.1
-    #host: localhost
+    port: 5432
+    database: mmmo_affiliate_qc
+    username: qc_user
+    password: ''
+
+  redis:
+    host: 1.1.1.1
+    port: 6379
+
   elasticSearch:
     addresses:
       - http://1.1.1.1:9200
-      #- http://localhost:9200
     enableLogging: false

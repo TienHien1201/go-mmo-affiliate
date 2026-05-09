@@ -34,25 +34,25 @@ func LoadConfig(env Enviroment, configPath string) (*Config, error) {
 	if err != nil {
 		return nil, fmt.Errorf("failed to load base config: %w", err)
 	}
-// load environment specific config
-envConfig , err := loadEnvConfig(env , configPath)
+	// load environment specific config
+	envConfig, err := loadEnvConfig(env, configPath)
 
-if err != nil {
-	return nil, fmt.Errorf("failed to load %s config: %w", env, err)
-}
+	if err != nil {
+		return nil, fmt.Errorf("failed to load %s config: %w", env, err)
+	}
 
-// Merge configs
-config := mergeConfigs(baseConfig, envConfig)
+	// Merge configs
+	config := mergeConfigs(baseConfig, envConfig)
 
-// Validate config
-if err := validateConfig(config); err != nil {
-	return nil, fmt.Errorf("invalid config: %w", err)
-}
+	// Validate config
+	if err := validateConfig(config); err != nil {
+		return nil, fmt.Errorf("invalid config: %w", err)
+	}
 	return config, nil
 }
 
 func loadBaseConfig(configPath string) (*viper.Viper, error) {
-	v :=  viper.New()
+	v := viper.New()
 	v.SetConfigName("base")
 	v.SetConfigType("yaml")
 	v.AddConfigPath(configPath)
@@ -71,8 +71,8 @@ func loadEnvConfig(env Enviroment, configPath string) (*viper.Viper, error) {
 	v.AddConfigPath(configPath)
 
 	// Enable environment variable substitution
-	v.SetEnvPrefix("MMO_AFFILIATE_APP") 
-	v.SetEnvKeyReplacer(strings.NewReplacer(".", "_")) 
+	v.SetEnvPrefix("MMO_AFFILIATE_APP")
+	v.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
 	v.AutomaticEnv()
 
 	if err := v.ReadInConfig(); err != nil {
@@ -81,8 +81,8 @@ func loadEnvConfig(env Enviroment, configPath string) (*viper.Viper, error) {
 	return v, nil
 }
 
-func mergeConfigs(base , env *viper.Viper) *Config {
-	var config Config 
+func mergeConfigs(base, env *viper.Viper) *Config {
+	var config Config
 
 	// Merge base config
 	if err := base.Unmarshal(&config); err != nil {

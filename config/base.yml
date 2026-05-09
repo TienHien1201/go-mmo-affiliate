@@ -1,5 +1,5 @@
 app:
-  env: ${APP_ENV}
+  env: dev
   debug: false
 
 server:
@@ -12,62 +12,70 @@ logger:
   level: info
   format: json
   output: stdout
+  timeFormat: 2006-01-02T15:04:05Z07:00
 
 database:
-  mysql:
-    host: ${MYSQL_HOST}
-    port: ${MYSQL_PORT}
-    database: ${MYSQL_DB}
-    username: ${MYSQL_USER}
-    password: ${MYSQL_PASSWORD}
+  postgres:
+    host: localhost
+    port: 5432
+    database: mmmo_affiliate_db
+    username: root
+    password: ''
     timezone: UTC
-    parseTime: true
+    sslMode: disable
     maxIdleConns: 10
     maxOpenConns: 50
-    connMaxLifetime: 300s
+    connMaxLifetime: 300
 
   redis:
-    host: ${REDIS_HOST}
-    port: ${REDIS_PORT}
-    password: ${REDIS_PASSWORD}
+    host: localhost
+    port: 6379
+    password: ''
     db: 0
     poolSize: 100
     minIdleConns: 5
-    poolTimeout: 30s
+    poolTimeout: 30
 
   elasticSearch:
     addresses:
-      - ${ES_URL}
-    username: ${ES_USER}
-    password: ${ES_PASSWORD}
+      - http://localhost:9200
+    username: ''
+    password: ''
+    apiKey: ''
     enableLogging: false
 
+ai:
+  url: ''
+  downloadUrl: ''
+  mmoUrl: ''
+  mmoToken: ''
+
 jwt:
-  access_secret: ${JWT_ACCESS_SECRET}
-  refresh_secret: ${JWT_REFRESH_SECRET}
+  access_secret: ''
+  refresh_secret: ''
   access_expire: 15m
   refresh_expire: 168h
   token_type: Bearer
 
 auth:
   google:
-    client_id: ${GOOGLE_CLIENT_ID}
-    client_secret: ${GOOGLE_CLIENT_SECRET}
-    callback_url: ${GOOGLE_CALLBACK}
+    client_id: ''
+    client_secret: ''
+    callback_url: ''
 
 cloudinary:
-  cloud_name: ${CLOUDINARY_NAME}
-  api_key: ${CLOUDINARY_KEY}
-  api_secret: ${CLOUDINARY_SECRET}
+  cloud_name: ''
+  api_key: ''
+  api_secret: ''
 
 mailer:
   smtp:
-    host: ${SMTP_HOST}
-    port: ${SMTP_PORT}
-    user: ${SMTP_USER}
-    pass: ${SMTP_PASS}
-  fromname: ${MAIL_FROM}
+    host: ''
+    port: 587
+    user: ''
+    pass: ''
+  fromname: ''
 
 stockai:
-  url: ${STOCK_AI_URL}
+  url: ''
   timeout: 10s

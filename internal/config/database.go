@@ -39,17 +39,18 @@ type DatabaseConfig struct {
 	Redis    RedisConfig
 	Elastic  ElasticSearchConfig
 }
+
 func (c *Config) InitPostgresDB() (*xpostgres.Client, error) {
-    return xpostgres.NewClient(&xpostgres.Config{
-        Host:            c.Database.Postgres.Host,
-        Port:            c.Database.Postgres.Port,
-        Username:        c.Database.Postgres.Username,
-        Password:        c.Database.Postgres.Password,
-        Database:        c.Database.Postgres.Database,
-        Timezone:        c.Database.Postgres.Timezone,
-        SSLMode:         c.Database.Postgres.SSLMode,
-        MaxIdleConns:    c.Database.Postgres.MaxIdleConns,
-        MaxOpenConns:    c.Database.Postgres.MaxOpenConns,
-        ConnMaxLifetime: c.Database.Postgres.ConnMaxLifetime,
-    })
+	return xpostgres.NewClient(&xpostgres.Config{
+		Host:            c.Database.Postgres.Host,
+		Port:            c.Database.Postgres.Port,
+		Username:        c.Database.Postgres.Username,
+		Password:        c.Database.Postgres.Password,
+		Database:        c.Database.Postgres.Database,
+		Timezone:        c.Database.Postgres.Timezone,
+		SSLMode:         c.Database.Postgres.SSLMode,
+		MaxIdleConns:    c.Database.Postgres.MaxIdleConns,
+		MaxOpenConns:    c.Database.Postgres.MaxOpenConns,
+		ConnMaxLifetime: c.Database.Postgres.ConnMaxLifetime,
+	})
 }

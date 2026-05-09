@@ -1,12 +1,16 @@
-extends: base
 app:
   env: dev
+  debug: true
+
+logger:
+  level: debug
+  format: console
 
 database:
-  mysql:
+  postgres:
     host: localhost
-    port: 3306
-    database: aklht_stock
+    port: 5432
+    database: mmmo_affiliate_db
     username: root
     password: 8000
 
@@ -15,11 +19,9 @@ database:
     port: 6379
     password: ''
 
-  elasticsearch:
-    addreasses:
+  elasticSearch:
+    addresses:
       - http://localhost:9200
-      - username: ''
-      - password: ''
-  stockai:
-    url: 'http://localhost:8001/'
-    timeout: 30
+
+ai:
+  url: http://localhost:8001
