@@ -1,0 +1,25 @@
+# env
+.env
+
+# config local
+/config/
+
+/documents/
+
+# logs
+*.log
+
+# binaries
+/bin/
+/tmp/
+
+# air
+.air.toml
+
+# ide
+.idea/
+.vscode/
+
+# generated
+docs/swagger/swagger.json
+docs/swagger/swagger.yaml

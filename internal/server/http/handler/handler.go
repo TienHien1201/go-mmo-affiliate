@@ -3,6 +3,8 @@ package handler
 import (
 	xhttp "github.com/TienHien1201/go-mmo-affiliate/pkg/http"
 	xlogger "github.com/TienHien1201/go-mmo-affiliate/pkg/logger"
+	echoSwagger "github.com/swaggo/echo-swagger"
+
 	"github.com/labstack/echo/v4"
 )
 
@@ -16,11 +18,22 @@ func NewHTTPHandler(logger *xlogger.Logger) xhttp.Handler {
 	}
 }
 
-func (h *handler) HeathyCheck(c echo.Context) error {
+// HealthCheck godoc
+// @Summary Health check
+// @Description Check API status
+// @Tags System
+// @Produce plain
+// @Success 200 {string} string "OK"
+// @Router /api/v1/health [get]
+func (h *handler) HealthCheck(c echo.Context) error {
 	return c.String(200, "OK")
 }
 
 func (h *handler) RegisterRoutes(e *echo.Echo) {
-	api := e.Group("api/v1/")
-	api.GET("heath", h.HeathyCheck)
+	api := e.Group("/api/v1")
+
+	api.GET("/health", h.HealthCheck)
+
+	// swagger endpoint
+	api.GET("/docs/*", echoSwagger.WrapHandler)
 }

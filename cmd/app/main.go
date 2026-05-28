@@ -9,6 +9,7 @@ import (
 	"syscall"
 	"time"
 
+	_ "github.com/TienHien1201/go-mmo-affiliate/docs/swagger"
 	"github.com/TienHien1201/go-mmo-affiliate/internal/config"
 )
 
@@ -23,6 +24,12 @@ func init() {
 	flag.StringVar(&Version, "version", Version, "Version")
 	flag.StringVar(&Env, "env", Env, "Enviroment")
 }
+
+// @title MMO Affiliate API
+// @version 1.0
+// @description Backend API Service
+// @host localhost:1424
+// @BasePath /
 func main() {
 	flag.Parse()
 

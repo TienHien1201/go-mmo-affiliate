@@ -4,7 +4,7 @@ app:
 
 server:
   http:
-    host: 0.0.0.0
+    host: localhost
     port: 1424
     timeout: 30s
 
