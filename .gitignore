@@ -1,17 +1,52 @@
 # env
 .env
+.env.*
+!.env.example
+!.env.sample
 
-# config local
-/config/
+# secrets
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.kdbx
+*.crt
+*.cer
+*.der
 
-/documents/
+# config (keep only examples)
+/config/*
+!/config/*.example.yml
+!/config/*.example.yaml
+!/config/*.sample.yml
+!/config/*.sample.yaml
+!/config/README.md
+
+# documents (local notes)
+/documents/*
 
 # logs
 *.log
+logs_*/
 
-# binaries
+# binaries/build outputs
 /bin/
 /tmp/
+/build_*/
+/dist/
+*.exe
+*.dll
+*.so
+*.dylib
+*.a
+*.o
+*.out
+*.test
+
+# test/coverage artifacts
+coverage*
 
 # air
 .air.toml
@@ -19,6 +54,13 @@
 # ide
 .idea/
 .vscode/
+
+# os junk
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
+*.bak
 
 # generated
 docs/swagger/swagger.json
