@@ -11,6 +11,7 @@ STEPS=1
 init:
 	@which golangci-lint || go install github.com/golangci/golangci-lint/cmd/golangci-lint@v1.56.0
 	@which swag || go install github.com/swaggo/swag/cmd/swag@v1.16.4
+	@which air || go install github.com/air-verse/air@latest
 
 export-path:
 	@export PATH=$$PATH:$$(go env GOPATH)/bin
@@ -26,9 +27,10 @@ run: export-path
 	@go run ./cmd/app -name $(NAME) -version $(VERSION) -env $(ENV)
 
 .PHONY: dev
-# run app with DEV environment
-dev:
-	@make run ENV=dev
+# run app with hot reload
+dev: export-path
+	@which air >/dev/null 2>&1 || { go install github.com/air-verse/air@latest; export PATH=$$PATH:$$(go env GOPATH)/bin; }
+	@air
 
 .PHONY: qc
 # run app with QC environment
@@ -62,7 +64,7 @@ build-prod:
 .PHONY: gen-swagger
 # gen-swagger
 gen-swagger:
-	@swag init -g ./cmd/app/main.go -o ./docs/swagger --outputTypes json
+	@swag init -g ./cmd/app/main.go -o ./docs/swagger
 
 .PHONY: run-swagger
 # run-swagger
