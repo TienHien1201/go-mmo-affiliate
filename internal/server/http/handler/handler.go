@@ -2,6 +2,7 @@ package handler
 
 import (
 	xhttp "github.com/TienHien1201/go-mmo-affiliate/pkg/http"
+	xres "github.com/TienHien1201/go-mmo-affiliate/pkg/http/response"
 	xlogger "github.com/TienHien1201/go-mmo-affiliate/pkg/logger"
 	echoSwagger "github.com/swaggo/echo-swagger"
 
@@ -26,7 +27,7 @@ func NewHTTPHandler(logger *xlogger.Logger) xhttp.Handler {
 // @Success 200 {string} string "OK"
 // @Router /api/v1/health [get]
 func (h *handler) HealthCheck(c echo.Context) error {
-	return c.String(200, "OK")
+	return xres.Success(c, nil,xres.WithDoc("/api/v1/docs/index.html"))
 }
 
 func (h *handler) RegisterRoutes(e *echo.Echo) {
